@@ -44,7 +44,7 @@ once its updated all its info its time to upgrade those systems, type:
 ```
 sudo apt upgrade
 ```
-once its finished ad back to the prompt type:
+once its finished and back to the prompt type:
 ```
 sudo reboot
 ```
