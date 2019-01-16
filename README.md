@@ -28,33 +28,33 @@ Step 8. Install programs (yes yes i know their called packeges but im just a reg
 Step 9. The reboot, so now your probably watching a bunch of big giberish moving fast then a flash of the screen then small giberish followed by stuff you can read that with any luck has a green OK next to it on the left, if so..... thats a good sign. once its doon booting you will be left with an empty black screen and it wants your login name (the name you gave it after it asked for your full name during the install) and password you gave it. the password field DOES NOT SHOW ANYTHING YOU TYPE that is normal. 
 
 Step 10. Login once you get logged in you wont see much other than some basic info but you will have a command prompt. so first thing we want to do is give it a password for ROOT so type
-...
+'''
 sudo passwd
-...
+'''
 then hit enter and give it the password you logged in with, next it says new unix password (give it a different password for security reasons) then enter it again to comfirm
 
 Step 11. Upgrading so now its time to get the whole system upto date type
 sudo apt update (it will ask for login password again)(if it says failed to fetch then most likely it has no internet and time to google, internet will be extremely important)
 once its updated all its info its time to upgrade those systems, type
-...
+'''
 sudo apt upgrade
-...
+'''
 once its finished ad back to the prompt type
-...
+'''
 sudo reboot
-...
+'''
 (reboot so that it can start using all the new packages)
 
 Step 12. SSH. so if it rebooted properly and its back at the login then login, were getting to the part where we'll be able to copy and paste once we're accessing it remotely but first we need it's ip address. i have an app for my router so i can see it's ip there but you can also get it from the info when you logged in, also if you type
-...
+'''
 ifconfig
-...
+'''
 record that ip since you'll need it later
 theres many ways to remotely connect, the most common it called putty https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 you can also add the exstension to google chrome just google "google chrome secure shell extension"
 from a pc on your local network you can input that ip address into putty and make sure it says port 22, then hit open. from outside your network like from your phone you will need to do more work opening a port on your router which i wont cover in this but google it.
 if all goes good and putty connects you will see the same login as you did on the monitor hooked to your machine, go ahead login. do the update and upgrade again for good measure lol. then copy and paste (paste is right click in the putty window, its actually copy too so takes a bit to get the hang of it)
-...
+'''
 sudo shutdown
-...
+'''
 it will tell you it sceduled a shutdown, so wait a minute and see if it does. if it does GREAT!!!!! now you can unplug the monitor install dummy plug and move it to where ever you want (hence why i prefer WIFI in mine)
