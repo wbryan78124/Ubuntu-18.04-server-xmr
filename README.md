@@ -57,10 +57,11 @@ ifconfig
 record that ip since you'll need it later
 theres many ways to remotely connect, the most common it called putty:
 > https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
 you can also add the exstension to google chrome just google "google chrome secure shell extension"
 from a pc on your local network you can input that ip address into putty and make sure it says port 22, then hit open. from outside your network like from your phone you will need to do more work opening a port on your router which i wont cover in this but google it.
 if all goes good and putty connects you will see the same login as you did on the monitor hooked to your machine, go ahead login. do the update and upgrade again for good measure lol. then copy and paste (paste is right click in the putty window, its actually copy too so takes a bit to get the hang of it):
 ```
 sudo shutdown
 ```
-it will tell you it sceduled a shutdown, so wait a minute and see if it does. if it does GREAT!!!!! now you can unplug the monitor install dummy plug and move it to where ever you want (hence why i prefer WIFI in mine)
+it will tell you it scheduled a shutdown, so wait a minute and see if it does. if it does GREAT!!!!! now you can unplug the monitor install dummy plug and move it to where ever you want (hence why i prefer WIFI in mine)
