@@ -65,3 +65,5 @@ if all goes good and putty connects you will see the same login as you did on th
 sudo shutdown
 ```
 it will tell you it scheduled a shutdown, so wait a minute and see if it does. if it does GREAT!!!!! now you can unplug the monitor install dummy plug and move it to where ever you want (hence why i prefer WIFI in mine)
+
+im doing this guide in my spare time so i'll continue creating it but please be patient, should be completed in couple days 
