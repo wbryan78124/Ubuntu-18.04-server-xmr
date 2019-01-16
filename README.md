@@ -11,7 +11,7 @@ alright here we go (hopefully your newly built pc/server boots, and can see usb 
 
 Step 1. download ubuntu server with traditional installer (so you can setup WIFI easier). i go directly to ubuntu:                      > https://www.ubuntu.com/download/server/thank-you?version=18.04.1.0&architecture=amd64
 
-Step 2. flash a freshly formatted usb drive (FAT32 or NTFS file systems) with your new .iso. for windows etcher works well:             > https://www.balena.io/etcher/ 
+Step 2. flash a freshly formatted usb drive of 8gb or larger (FAT32 or NTFS file systems) with your new .iso For windows etcher works well:             > https://www.balena.io/etcher/ 
 
 if on ubuntu use Startup disk creator. on MAC i have no idea i dont have one lol
 
