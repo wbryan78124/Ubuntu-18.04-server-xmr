@@ -110,7 +110,7 @@ so we need to jump into our newly decompressed folder
 ```
 cd amdgpu-pro-18.50-708488-ubuntu-18.04
 ```
-Now to run some install's. this will install the needed parts to allow opencl to run on your system for the miner, there's 2 versions it can use for opencl PAL and LEGACY best i can tell legacy is for everything but vega cards, i havent had any luck running vega and rx cards at the same time reliably. we will be setting up for RX cards. Do one line at a time and let it finish before doning the next line.
+Now to run some install's. this will install the needed parts to allow opencl to run on your system for the miner, there's 2 versions it can use for opencl PAL and LEGACY best i can tell legacy is for everything but vega cards, i havent had any luck running vega and rx cards at the same time reliably. we will be setting up for RX cards. Do one line at a time and let it finish before doing the next line.
 ```
 ./amdgpu-install -y
 
@@ -174,7 +174,7 @@ heres a cheat sheet to tmux
 
 
 well thats all i got, i hope you made it this far and your machine is mining away for you
-if you find this guide useful or your so inclined feel free to make a donation feel free
+if you find this guide useful or your so inclined feel free to make a XMR donation 
 > 47NdA6LKkAPHQaHVBFaUF7WM8cK3BuC9y92CnJGTcZSyiggicnbNaYAHR3oeyVYdpCjcot9m4YfPr34cHB5Sed9Q9DzWwpr
 or come mine with us over at
 > MyO-XMR.com
