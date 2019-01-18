@@ -60,10 +60,74 @@ theres many ways to remotely connect, the most common it called putty:
 
 you can also add the exstension to google chrome just google "google chrome secure shell extension"
 from a pc on your local network you can input that ip address into putty and make sure it says port 22, then hit open. from outside your network like from your phone you will need to do more work opening a port on your router which i wont cover in this but google it.
-if all goes good and putty connects you will see the same login as you did on the monitor hooked to your machine, go ahead login. do the update and upgrade again for good measure lol. then copy and paste (paste is right click in the putty window, its actually copy too so takes a bit to get the hang of it):
+if all goes good and putty connects you will see the same login as you did on the monitor hooked to your machine, go ahead login. do the update and upgrade again for good measure lol. then copy and paste (paste is right click in the putty window, its actually copy too so takes a bit to get the hang of it)
+OPTIONAL, download winsp(great gui tool for copying files, creating directories, and modifying files):
+> https://winscp.net/eng/download.php
 ```
 sudo shutdown
 ```
 it will tell you it scheduled a shutdown, so wait a minute and see if it does. if it does GREAT!!!!! now you can unplug the monitor install dummy plug and move it to where ever you want (hence why i prefer WIFI in mine)
+Once you power it back up you need to SSH in and login, its time to change some important settings, install drivers, and miner (Important as in you get it wrong and system wont boot and you'll have to reinstall ubuntu)
 
-im doing this guide in my spare time so i'll continue creating it but please be patient, should be completed in couple days 
+Step 13. GRUB. grub is the bootloader and we need to add some things to make the gpu's, drivers, opencl software, and overclocking work.
+we're going to use the built in editor NANO to do this(you can use any that you prefer, im just used to NANO).
+```
+sudo nano /etc/default/grub
+```
+the screen will change and you'll be looking at the grub config file. your going to replace and entire line GRUB_CMDLINE_LINUX_DEFAULT="" with this modified one by moving the cursor to the end of it on the right and hit backspace till the line is empty then copy & paste this line
+```
+GRUB_CMDLINE_LINUX_DEFAULT="iommu=soft amdgpu.ppfeaturemask=0xffffffff"
+```
+once thats done you hit control and O(the letter not the number) then hit enter (that tell's nano you want to write the new info to the file) then control and X to exit nano. The iommu is an AMD thing and built into the motherboard bios, it maps the hardware in your machine but it's problematic so =soft tells grub and linux to map this with software. THIS PART IS VITAL!!!! you now have to update the grub with the new info to do so type:
+```
+sudo update-grub
+```
+hit enter and let it do its thing
+
+Step 14. Drivers, this is where i hit the most problems. different versions of the drivers have different quirks so we'll just use the most recent. you can download to your pc and use winscp to transfer to your server (very easy so shouldnt have to explain) or you can go the difficult route(i'll show this option). As of writing this amdgpu-pro-18.50-708488-ubuntu-18.04 is the current one and i can confirm it works. first to make things easier lets create to new directories to sort things out, "gpu" for drivers, and "miner" for mining software.
+```
+mkdir /gpu
+mkdir /mining
+```
+if you type dir at the prompt you should now see your 2 new ones. So lets hop into "gpu" and download a driver
+```
+cd gpu
+```
+next we will download directly from AMD
+```
+wget --referer=http://support.amd.com  https://drivers.amd.com/drivers/linux/amdgpu-pro-18.50-708488-ubuntu-18.04.tar.xz
+```
+if it says wget is an unknown command you will install it by typing:
+```
+sudo apt install wget
+```
+and ther try download again, once it downloads we need to decompress it by using:
+```
+tar -Jxvf amdgpu-pro-18.50-708488-ubuntu-18.04.tar.xz
+```
+this is where winscp can make things easier by allowing easy renaming of this file, but we're doing it that hard way lol
+so we need to jump into our newly decompressed folder
+```
+cd amdgpu-pro-18.50-708488-ubuntu-18.04
+```
+Now to run some install's. this will install the needed parts to allow opencl to run on your system for the miner, there's 2 versions it can use for opencl PAL and LEGACY best i can tell legacy is for everything but vega cards, i havent had any luck running vega and rx cards at the same time reliably. we will be setting up for RX cards. Do one line at a time and let it finish before doning the next line.
+```
+./amdgpu-install -y
+
+./amdgpu-pro-install -y --opencl=legacy
+
+sudo usermod -a -G video $LOGNAME
+```
+now time to reboot again. if it boots and you can SSH back in AWESOME!!!! if not welcome to linux and AMD drivers and time to try a different guide.
+
+Step 15. Opencl
+now that we have drivers we need to test them to know if we even have a chance of the rest working. To do that we need a couple more packages
+```
+sudo apt install opencl-headers
+
+sudo apt install clinfo
+```
+once each is done time to reboot again and SSH again (all the reboots aren't totally required but we want to give linux every chance to make this work) type clinfo and hit enter after a short wait you should have a screen the has a bunch of info about your gpu's. If the system hangs, or your get "segment fault","illegal instruction", there's a problem and something isnt compatible so the rest wont work and try a different guide (trouble shooting linux is complicated for average user). if no fault's and its back to command prompt time for next step
+  
+
+
