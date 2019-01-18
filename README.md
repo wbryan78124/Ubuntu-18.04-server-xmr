@@ -174,9 +174,10 @@ heres a cheat sheet to tmux
 
 
 well thats all i got, i hope you made it this far and your machine is mining away for you
-if you find this guide useful or your so inclined feel free to make a XMR donation 
+if you find this guide useful or your so inclined feel free to make a XMR donation: 
 > 47NdA6LKkAPHQaHVBFaUF7WM8cK3BuC9y92CnJGTcZSyiggicnbNaYAHR3oeyVYdpCjcot9m4YfPr34cHB5Sed9Q9DzWwpr
-or come mine with us over at
+
+or come mine with us over at:
 > MyO-XMR.com
 
 
