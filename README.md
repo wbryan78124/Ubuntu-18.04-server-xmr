@@ -128,6 +128,56 @@ sudo apt install opencl-headers
 sudo apt install clinfo
 ```
 once each is done time to reboot again and SSH again (all the reboots aren't totally required but we want to give linux every chance to make this work) type clinfo and hit enter after a short wait you should have a screen the has a bunch of info about your gpu's. If the system hangs, or your get "segment fault","illegal instruction", there's a problem and something isnt compatible so the rest wont work and try a different guide (trouble shooting linux is complicated for average user). if no fault's and its back to command prompt time for next step
-  
+
+Step 16. Cast-xmr
+this is a great mining program and plays well with linux. Big shout out to Gandalph3000 for all the work thats been put into cast xmr. Lets download it but first back to your home directory with:
+```
+cd ~
+```
+then jump into the mining directory
+```
+cd mining
+```
+now to download and unzip it (currently its version 1.6.6)
+```
+wget http://www.gandalph3000.com/download/cast_xmr-vega-ubuntu_166.tar.gz
+
+tar xvzf cast_xmr-vega-ubuntu_166.tar.gz
+```  
+and you now have a new directory. Time to edit a file called run.sh, it has all the info for your pool address, wallet, pool pasword, and tons more. I'll just cover the basic's though. Yet again winscp would be the easy way but we're doing the hard way. first enter the directory
+```
+cd cast_xmr-vega-ubuntu_166
+```
+then we're going to use nano again to change everything
+```
+sudo nano run.sh
+```
+--algo=-1 will set the miner to auto detect algorithm for monero
+-S pool.MyO-XMR.com:5555 will be your pool address and port (this is my favorite pool so feel free to stop in and mine there too)
+-u will be your wallet address (i would put mine in here to be funny but..... no lol)
+you may need to add a -p with your password (usually your email addy after you sign up with a pool) for your pool, just kinda depends on how the pool you mine too works
+-G 0,1 this will select the gpu's you want cast to run with (in my example i only have 2 so im using both)
+there are many more options in cast but all that can be googled and tested as you see fit. in the run.sh you also see fan speed,overclocking and power limit controls. I had problems using the fan speed setting with my system but over clock and power limit worked fine. as far as i know more controls are avalible with linux kernel 4.17 but the 4.15.0-43 kernel you have at the time of writing this works. so if it aint broke dont fix it unless you know what your doing.
+once done changing the run.sh remember you need to write the file (control and O) then hit enter to write it, (control and X) to exit nano
+
+Step 17. Mining
+ok everything is ready to go and its time to mine. If your already in the cast xmr directory good, if your in another directory get into the cast xmr directory then lets start this show but in a console window we can leave running easily. For this we will use tmux, its a handy dandy multi console window tool so type tmux and hit enter. your screen should go blank except a green boarder and a command prompt. Now lets see what happens type:
+```
+./run.sh
+```
+may ask you for your password. if everything is good one by one cast will list your gpu's in a teal color then initilaize them, then connect to pool and start mining. it will show you average hash per gpu, gpu temp, gpu fan speed, and more. most common issues are incorrect settings in the run.sh config that cause it to shutdown immediately. if you loose network connection cast will only try to reconnect  100 times before it shuts down (in which you need to restart it). Ok so every thing is good and its showing shares accepted by your pool time to detach from tmux and ssh. To detach from tmux and leave the console running hit control then b, then hit the letter d, now your detached and back to the ssh console, to safely and nicely exit that type exit and hit enter and console will close. if you want to go back into the tmux session thats mining SSH in and type:
+```
+tmux attach
+```
+heres a cheat sheet to tmux 
+> https://tmuxcheatsheet.com/
+
+
+well thats all i got, i hope you made it this far and your machine is mining away for you
+if you find this guide useful or your so inclined feel free to make a donation feel free
+> 47NdA6LKkAPHQaHVBFaUF7WM8cK3BuC9y92CnJGTcZSyiggicnbNaYAHR3oeyVYdpCjcot9m4YfPr34cHB5Sed9Q9DzWwpr
+or come mine with us over at
+> MyO-XMR.com
+
 
 
