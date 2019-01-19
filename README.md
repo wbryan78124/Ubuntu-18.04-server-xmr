@@ -9,15 +9,15 @@ ubuntu 18.04 server xmr mining guide
 parts needed are the usual for a pc (mother board, cpu, cooler, ETC... you get the idea) except a hdmi dummy plug ($5 ebay).
 alright here we go (hopefully your newly built pc/server boots, and can see usb ports) these instructions might be out of order during the install but its all here and easy to read through
 
-#Step 1. 
+Step 1. 
 download ubuntu server with traditional installer (so you can setup WIFI easier). i go directly to ubuntu:                      > https://www.ubuntu.com/download/server/thank-you?version=18.04.1.0&architecture=amd64
 
-#Step 2.
+Step 2.
 flash a freshly formatted usb drive of 8gb or larger (FAT32 or NTFS file systems) with your new .iso For windows etcher works well:             > https://www.balena.io/etcher/ 
 
 if on ubuntu use Startup disk creator. on MAC i have no idea i dont have one lol
 
-#Step 3.
+Step 3.
 boot to bios on your newly built machine (theres soo many options on which button to hit to get to bios i cant list them but usually its F1 or Delete key, now hunt through your menu looking for secure boot. once you find it you might have to google how to turn it off and how to turn on CSM compatibility (AMD cards with modded bios dont play nice with secure boot on and CSM off). id leave the other options at default unless it wont boot.
 
 Step 4.
